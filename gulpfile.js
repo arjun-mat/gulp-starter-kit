@@ -155,7 +155,7 @@ gulp.task('browserSync', function () {
 });
 
 gulp.task('serve', ['browserSync', 'sassify'], function () {
-  gulp.watch('app/styles/**/*.scss', ['sass']); 
+  gulp.watch('app/styles/**/*.scss', ['sassify', browserSync.reload]);
   gulp.watch('app/**/*.html', browserSync.reload); 
   gulp.watch('app/scripts/**/*.js', browserSync.reload);
   gulp.watch('bower_components/**', ['wiredep']);
