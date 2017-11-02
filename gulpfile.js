@@ -4,6 +4,7 @@ var del = require('del');
 var wiredep = require('wiredep').stream;
 var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
+var modRewrite = require('connect-modrewrite');
 
 //define paths here
 var paths = {
@@ -150,6 +151,9 @@ gulp.task('browserSync', function () {
       routes: {
         "/bower_components": "bower_components"
       },
+      middleware: [
+        modRewrite(['!\.html|\.js|\.css|\.png|\.jpg|\.jpeg$ /index.html [L]'])
+      ],
     },
   });
 });
